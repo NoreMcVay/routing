@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="list-group">
+        <a
+          [routerLink]="['/servers', server.id]"
+          [queryParams]="{allowEdit: server.id === 3 ? '1' : '0'}"
+          fragment="loading"
+          href="#"
+          class="list-group-item"
+          *ngFor="let server of servers">
+          {{ server.name }}
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <router-outlet></router-outlet> <!--display this instead of the servers' child components selectors-->
+    </div>
+  </div>
+  
+  
+  <!--line 5// we're loading server component..../servers/serverid -->
+  <!--line 6// we're binding to [queryParams] property -->
+  <!--line 6// we have query params to decide whether we can edit the server or not. 
+    by passing js object, we can define key/value pairs of the params we want to edit -->
+
+  <!--EXAMPLE: how to pass queryparams and fragments using routerLink
+      [routerLink]="['/servers', server.id]"
+      [queryParams]="{allowEdit: '1'}"
+      fragment="loading"
+    IN THE BROWSER: -->
+<!--localhost/4200/servers/1?allowEdit=0#loading-->
+
+<!--hash fragments are used to jump to a specific place in your app-->
+<!--http://localhost:4200/servers/1/edit?allowEdit=1#loading-->
+  
+
+  
